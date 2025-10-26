@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "FundsBook",
-    "slug": "FundsBook",
+    "slug": "fundsbook",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -19,7 +19,8 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.tanayagr.fundsbook"
     },
     "web": {
       "output": "static",
@@ -43,6 +44,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "ae8527ca-b7a9-45dc-b76b-2c29b9f29c3d"
+      }
+    },
+    "owner": "tanayagr"
   }
 }

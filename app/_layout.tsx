@@ -1,24 +1,46 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Stack, useRouter, useSegments } from "expo-router";
+import React, { useEffect } from "react";
+import { AuthProvider, useAuth } from "../src/context/AuthContext";
+import { ActivityIndicator, View } from "react-native";
+import { BooksProvider } from "@/src/context/BooksContext";
+import { BookShelfProvider } from "@/src/context/BookShelfContext";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+const InitialLayout = () => {
+  const { user, loading } = useAuth();
+  const segments = useSegments();
+  const router = useRouter();
 
-export const unstable_settings = {
-  anchor: '(tabs)',
+  useEffect(() => {
+    if (loading) return;
+
+    const onLoginPage = segments[0] === "login";
+
+    if (user && onLoginPage) {
+      router.replace("/(tabs)/library");
+    } else if (!user && !onLoginPage) {
+      router.replace("/login");
+    }
+  }, [user, loading, segments, router]);
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  return <Stack screenOptions={{ headerShown: false }} />;
 };
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <AuthProvider>
+      <BookShelfProvider>
+        <BooksProvider>
+          <InitialLayout />
+        </BooksProvider>
+      </BookShelfProvider>
+    </AuthProvider>
   );
 }

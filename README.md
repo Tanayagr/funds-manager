@@ -1,50 +1,68 @@
-# Welcome to your Expo app 👋
+# FundsBook
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+FundsBook is a simple and intuitive mobile application designed for managing personal or group funds. Built with React Native and Expo, it leverages Firebase for real-time data synchronization and user authentication.
 
-## Get started
+This project also serves as a practical exercise for learning and practicing development with Google's Gemini Code Assist, Expo, and Firebase's serverless capabilities.
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+- **User Authentication:** Secure sign-up and sign-in with email and password, including a "Forgot Password" feature.
+- **Bookshelf Management:** Organize your finances by creating multiple "bookshelves." Users can own and delete their shelves.
+- **Book Management:** Within each bookshelf, create individual "books" to track different funds or projects.
+- **Real-time Updates:** Data is synchronized in real-time across devices using Firebase Firestore.
+- **Modern Navigation:** Utilizes Expo Router for file-based routing and clean navigation logic.
+- **Optimized Data Fetching:** Books are fetched on-demand when a user navigates to a specific bookshelf, ensuring the app is scalable and efficient.
 
-2. Start the app
+## Tech Stack
 
-   ```bash
-   npx expo start
-   ```
+- **Framework:** React Native with Expo
+- **Language:** TypeScript
+- **Navigation:** Expo Router
+- **Backend & Database:** Firebase (Authentication & Firestore)
+- **State Management:** React Context API
 
-In the output, you'll find options to open the app in a
+## Getting Started
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Prerequisites
 
-## Get a fresh project
+- Node.js (LTS version recommended)
+- `npm` or `yarn`
+- Expo Go app on your mobile device
 
-When you're ready, run:
+### Installation
 
-```bash
-npm run reset-project
-```
+1. **Clone the repository:**
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+    ```bash
+    git clone <your-repository-url>
+    cd FundsBook
+    ```
 
-## Learn more
+2. **Install dependencies:**
 
-To learn more about developing your project with Expo, look at the following resources:
+    ```bash
+    npm install
+    ```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+3. **Set up Firebase:**
+    - Create a Firebase project in the Firebase Console.
+    - Enable Firestore and Authentication (Email/Password).
+    - Create a `.env` file in the root of the project and add your Firebase project credentials. Use the following as a template:
 
-## Join the community
+    ```
+    EXPO_PUBLIC_FIREBASE_API_KEY="AIza..."
+    EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN="..."
+    EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="..."
+    EXPO_PUBLIC_FIREBASE_PROJECT_ID="..."
+    EXPO_PUBLIC_FIREBASE_APP_ID="..."
+    ```
 
-Join our community of developers creating universal apps.
+4. **Run the application:**
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+    ```bash
+    npx expo start
+    ```
+
+    Scan the QR code with the Expo Go app on your phone.
